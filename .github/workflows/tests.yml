@@ -1,0 +1,22 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build_typescript:
+    name: TypeScript tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build Typescript
+        run: |
+          yarn install --frozen-lockfile
+          yarn build:tsc
+        working-directory: './'
+
+      - name: Run Typescript tests
+        run: yarn test:ci
+        working-directory: './'

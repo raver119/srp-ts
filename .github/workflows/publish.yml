@@ -1,0 +1,28 @@
+name: Publish
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build_package:
+    name: Build package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Build API
+        run: |
+          yarn install --frozen-lockfile
+          yarn build:tsc
+        working-directory: './'
+
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          package: ./package.json
+          check-version: true
