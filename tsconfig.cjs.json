@@ -6,7 +6,6 @@
     "diagnostics": true,
     "target": "ES5",
     "downlevelIteration": true,
-    "declarationDir": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
@@ -23,12 +22,13 @@
       "es6",
       "es2015"
     ],
-    "module": "esnext",
+    "module": "CommonJS",
     "sourceMap": false,
     "typeRoots": [
       "/.node_modules/@types"
     ],
-    "outDir": "./"
+    "outDir": "build/cjs/",
+    "declarationDir": "build/cjs/"
   },
   "include": [
     "src/**/*.ts"

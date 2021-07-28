@@ -6,29 +6,33 @@
     "srp6",
     "secure remote password"
   ],
-  "version": "1.0.0",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "version": "1.0.1",
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "es2015": "build/es2015/index.js",
+  "types": "build/cjs/index.d.js",
   "license": "MIT",
   "scripts": {
-    "build:tsc": "tsc --build tsconfig.json",
+    "build": "yarn clean && yarn build:cjs && yarn build:esm  && yarn build:es2015",
+    "build:esm": "tsc --build tsconfig.esm.json ",
+    "build:cjs": "tsc --build tsconfig.cjs.json ",
+    "build:es2015": "tsc --build tsconfig.es2015.json",
     "build:rollup": "rollup -c",
-
     "test": "jest --ci=true --watchAll",
-    "test:ci": "jest --ci=true"
+    "test:ci": "jest --ci=true",
+    "clean": "rimraf build"
   },
   "files": [
-    "index.d.ts",
-    "index.js"
+    "build/"
   ],
   "dependencies": {
-    "@rollup/plugin-commonjs": "^19.0.2",
     "jsbn": "^1.1.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "typescript": "^4.3.5",
     "hash.js": "^1.1.7"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^4.3.5",
     "@rollup/plugin-node-resolve": "^13.0.4",
     "@rollup/plugin-typescript": "^8.2.3",
     "jest": "^27.0.6",
@@ -38,7 +42,8 @@
     "ts-node": "^10.1.0",
     "@types/jest": "^26.0.24",
     "@types/jsbn": "^1.2.29",
-    "@types/node": "16.4.5"
+    "@types/node": "16.4.5",
+    "rimraf": "^3.0.2"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -49,7 +54,7 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsconfig": "tsconfig.json"
+        "tsconfig": "tsconfig.cjs.json"
       },
       "google": {}
     },
