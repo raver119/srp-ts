@@ -18,7 +18,7 @@ jobs:
       - name: Build API
         run: |
           yarn install --frozen-lockfile
-          yarn build:tsc
+          yarn build
         working-directory: './'
 
       - uses: JS-DevTools/npm-publish@v1
