@@ -1,0 +1,80 @@
+{
+  "name": "srp",
+  "description": "SRP6 client protocol implementation, compatible with famous SRP-JS, but without NodeJS crypto dependency",
+  "keywords": [
+    "srp",
+    "srp6",
+    "secure remote password"
+  ],
+  "version": "1.0.0",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build:tsc": "tsc --build tsconfig.json",
+    "build:rollup": "rollup -c",
+
+    "test": "jest --ci=true --watchAll",
+    "test:ci": "jest --ci=true"
+  },
+  "files": [
+    "index.d.ts",
+    "index.js"
+  ],
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^19.0.2",
+    "jsbn": "^1.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^4.3.5",
+    "hash.js": "^1.1.7"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-typescript": "^8.2.3",
+    "jest": "^27.0.6",
+    "rollup": "^2.55.0",
+    "rollup-plugin-typescript3": "^1.1.3",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
+    "@types/jest": "^26.0.24",
+    "@types/jsbn": "^1.2.29",
+    "@types/node": "16.4.5"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!shiva/)"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      },
+      "google": {}
+    },
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.schema.ts",
+      "!src/schema/*.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts)$": "ts-jest",
+      "^.+\\.js$": "babel-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+  }
+}
