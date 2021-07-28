@@ -1,5 +1,5 @@
 {
-  "name": "srp",
+  "name": "srp-ts",
   "description": "SRP6 client protocol implementation, compatible with famous SRP-JS, but without NodeJS Crypto dependencies",
   "keywords": [
     "srp",
