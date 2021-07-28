@@ -9,7 +9,7 @@ const sourceMap = false
 export default {
     input: "src/index.ts",
     output: {
-        dir: 'build/',
+        dir: './',
         format: 'esm',
         sourcemap: sourceMap
     },
@@ -19,7 +19,7 @@ export default {
         typescript({
             declaration: true,
             sourceMap: sourceMap,
-            declarationDir: 'build/',
+            declarationDir: './',
             rootDir: 'src/'
         }),
         commonjs({sourceMap: sourceMap})
